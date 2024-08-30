@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './typography.scss';
+
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+html {
+  @apply h-auto overflow-hidden;
+}
+
+body {
+  font-family: 'Radio Canada', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  @apply bg-body text-default w-full h-screen overflow-y-auto overflow-x-hidden p-4;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+%bg-green {
+  background: radial-gradient(
+    62.34% 62.34% at 50% 50%,
+    #007a6c 16%,
+    #007168 34%,
+    #005a60 63%,
+    #1b4348 99.99%,
+    #1b4348 100%
+  );
+}
+%bg-red {
+  background: radial-gradient(
+    62.34% 62.34% at 50% 50%,
+    #7a0000 16%,
+    #710000 34%,
+    #600000 63%,
+    #481b1b 99.99%,
+    #481b1b 100%
+  );
+}
+
+%bg-blue {
+  background: linear-gradient(
+    90deg,
+    #1475c4 0%,
+    #175e9b 19%,
+    #194974 40%,
+    #1b4165 52%,
+    #1a466f 61%,
+    #18568c 76%,
+    #1470bb 97%,
+    #1475c4 100%
+  );
+}
