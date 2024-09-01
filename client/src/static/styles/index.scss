@@ -17,7 +17,7 @@ body {
   font-family: 'Radio Canada', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  @apply bg-body text-default w-full h-screen overflow-y-auto overflow-x-hidden p-4;
+  @apply bg-body text-default w-full h-screen overflow-y-auto overflow-x-hidden;
 }
 
 ::-webkit-scrollbar {
@@ -63,4 +63,27 @@ input[type='number']::-webkit-outer-spin-button {
     #1470bb 97%,
     #1475c4 100%
   );
+}
+
+.btn-warning {
+  @apply bg-warning hover:bg-[#fffce9] hover:border-[#2C1A16];
+}
+
+.disabled {
+  @apply disabled:text-[#868E96] disabled:bg-[#ccc] disabled:border-[#868E96];
+}
+
+.btn {
+  @apply flex items-center justify-center border-t-[1px] border-l-[1px] border-[4px] border-[#2C1A16] rounded-[20px] text-base h-auto text-primary disabled;
+}
+.btn-primary {
+  @apply bg-primary text-white hover:bg-[#eb7a55] hover:border-[#2C1A16];
+}
+
+.btn-secondary {
+  @apply flex items-center justify-center border-t-[1px] border-l-[1px] border-[2px] border-[#2C1A16] bg-[#F1A025] text-white h-auto hover:bg-primary hover:text-white;
+}
+
+.border-primary {
+  @apply border border-border rounded-[20px];
 }

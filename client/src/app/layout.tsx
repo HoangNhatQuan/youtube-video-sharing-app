@@ -6,9 +6,10 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 
+import Header from '@/components/header'
 import ToastProvider from '@/providers/toast.provider'
 
-import '@/@/static/styles/index.scss'
+import '@/static/styles/index.scss'
 
 const mutationCache = new MutationCache({
   onSuccess: () => {},
@@ -31,7 +32,10 @@ const Layout: React.FC = () => {
     <>
       <QueryClientProvider client={queryClient}>
         <ToastProvider>
-          <Outlet />
+          <div className="flex flex-col relative gap-4">
+            <Header />
+            <Outlet />
+          </div>
         </ToastProvider>
       </QueryClientProvider>
     </>
