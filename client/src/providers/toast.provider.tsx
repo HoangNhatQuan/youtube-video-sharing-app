@@ -1,7 +1,6 @@
-import { Fragment, ReactNode, useEffect } from 'react'
+import { Fragment, ReactNode } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import clsx from 'clsx'
-
 import IconToast from '@/components/toast'
 import { HeroIcon } from '@/components/icons'
 

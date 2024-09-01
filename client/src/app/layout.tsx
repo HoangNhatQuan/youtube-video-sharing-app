@@ -8,7 +8,7 @@ import {
 
 import ToastProvider from '@/providers/toast.provider'
 
-import '@/static/styles/index.scss'
+import '@/@/static/styles/index.scss'
 
 const mutationCache = new MutationCache({
   onSuccess: () => {},
