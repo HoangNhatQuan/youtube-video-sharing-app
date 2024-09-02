@@ -4,7 +4,6 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { AuthController } from './controllers/auth.controller'
 import { User, UserSchema } from './entities/users.entity'
 import { AuthService } from './services/auth.service'
-import { UserController } from './controllers/user.controller'
 import { UserService } from './services/user.service'
 import {
   RefreshToken,
@@ -21,8 +20,8 @@ import {
       },
     ]),
   ],
-  controllers: [AuthController, UserController],
+  controllers: [AuthController],
   providers: [AuthService, UserService],
-  exports: [],
+  exports: [UserService],
 })
 export class UserModule {}

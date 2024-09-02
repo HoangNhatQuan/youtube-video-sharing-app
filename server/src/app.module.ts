@@ -10,6 +10,8 @@ import configuration from './configs/configuration'
 import { UserModule } from './modules/users/users.module'
 import { AppService } from './app.service'
 import { YoutubeApiModule } from 'providers/youtube-api/youtube-api.module'
+import { NotificationModule } from 'modules/notifications/notification.module'
+import { VideoModule } from 'modules/videos/video.module'
 
 @Module({
   imports: [
@@ -39,6 +41,8 @@ import { YoutubeApiModule } from 'providers/youtube-api/youtube-api.module'
     EventEmitterModule.forRoot({ wildcard: true }),
     UserModule,
     YoutubeApiModule,
+    NotificationModule,
+    VideoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
