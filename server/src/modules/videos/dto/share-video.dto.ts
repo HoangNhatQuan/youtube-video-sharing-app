@@ -1,9 +1,9 @@
 import { IsNotEmpty, IsString } from 'class-validator'
 
-export class CreateVideoSharingDto {
+export class ShareVideoDto {
   @IsString()
   @IsNotEmpty()
-  userId: string
+  referrerId: string
 
   @IsString()
   @IsNotEmpty()

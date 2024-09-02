@@ -9,6 +9,7 @@ import { AppController } from './app.controller'
 import configuration from './configs/configuration'
 import { UserModule } from './modules/users/users.module'
 import { AppService } from './app.service'
+import { YoutubeApiModule } from 'providers/youtube-api/youtube-api.module'
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { AppService } from './app.service'
     ScheduleModule.forRoot(),
     EventEmitterModule.forRoot({ wildcard: true }),
     UserModule,
+    YoutubeApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
