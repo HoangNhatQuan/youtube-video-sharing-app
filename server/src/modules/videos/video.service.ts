@@ -9,6 +9,9 @@ import { Model } from 'mongoose'
 import { Video } from './entities/video.entity'
 import { ShareVideoDto } from './dto/share-video.dto'
 import { YoutubeApiService } from 'providers/youtube-api/youtube-api.service'
+import { MIN_OFFSET } from 'pipelines/offset.pipe'
+import { MAX_LIMIT } from 'pipelines/limit.pipe'
+import { User } from 'modules/users/entities/users.entity'
 
 @Injectable()
 export class VideoService {
@@ -22,8 +25,22 @@ export class VideoService {
     return !video
   }
 
-  async getVideos() {
-    // return await this.videoModel.find(query)
+  async getVideos({
+    offset = MIN_OFFSET,
+    limit = MAX_LIMIT,
+  }: {
+    offset?: number
+    limit?: number
+  }) {
+    return await this.videoModel.find(
+      {},
+      {
+        sort: { createdAt: -1 },
+        skip: offset,
+        limit,
+      },
+      { populate: [{ path: 'referrerId', model: User.name }] },
+    )
   }
 
   async shareVideo(userId: string, shareVideoDto: ShareVideoDto) {
