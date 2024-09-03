@@ -1,17 +1,13 @@
-import {
-  BadRequestException,
-  ForbiddenException,
-  Injectable,
-} from '@nestjs/common'
+import { BadRequestException, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
-import { Model } from 'mongoose'
+import { Model, Types } from 'mongoose'
 
 import { Video } from './entities/video.entity'
 import { ShareVideoDto } from './dto/share-video.dto'
 import { YoutubeApiService } from 'providers/youtube-api/youtube-api.service'
 import { MIN_OFFSET } from 'pipelines/offset.pipe'
 import { MAX_LIMIT } from 'pipelines/limit.pipe'
-import { User } from 'modules/users/entities/users.entity'
+import { VideoGateway } from './video.gateway'
 
 @Injectable()
 export class VideoService {
@@ -19,6 +15,7 @@ export class VideoService {
     @InjectModel(Video.name)
     private readonly videoModel: Model<Video>,
     private readonly youtubeService: YoutubeApiService,
+    private readonly videoGateway: VideoGateway,
   ) {}
   private async isVideoIdUnique(videoYtbId: string): Promise<boolean> {
     const video = await this.videoModel.findOne({ videoYtbId })
@@ -32,23 +29,13 @@ export class VideoService {
     offset?: number
     limit?: number
   }) {
-    return await this.videoModel.find(
-      {},
-      {
-        sort: { createdAt: -1 },
-        skip: offset,
-        limit,
-      },
-      { populate: [{ path: 'referrerId', model: User.name }] },
-    )
+    return await this.videoModel
+      .find({}, {}, { sort: { createdAt: -1 }, skip: offset, limit })
+      .populate('referrerId', 'name')
   }
 
   async shareVideo(userId: string, shareVideoDto: ShareVideoDto) {
-    const { url, referrerId } = shareVideoDto
-
-    if (referrerId !== userId) {
-      throw new ForbiddenException('Unauthorized')
-    }
+    const { url } = shareVideoDto
 
     if (!this.youtubeService.isValidYouTubeUrl(url)) {
       throw new BadRequestException('Invalid YouTube URL')
@@ -69,11 +56,12 @@ export class VideoService {
     }
 
     const newVideo = await this.videoModel.create({
-      referrerId: userId,
-      videoId,
+      referrerId: new Types.ObjectId(userId),
+      videoYtbId: videoId,
       url,
       ...metadata,
     })
+    this.videoGateway.notifyNewVideo(newVideo)
     return newVideo
   }
 }

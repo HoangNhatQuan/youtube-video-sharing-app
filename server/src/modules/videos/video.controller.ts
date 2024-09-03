@@ -20,7 +20,7 @@ export class VideoController {
   constructor(private readonly videoService: VideoService) {}
 
   @Get()
-  getNotifications(
+  getVideos(
     @Query('offset', ParseOffsetPipe) offset: number,
     @Query('limit', ParseLimitPipe) limit: number,
   ) {

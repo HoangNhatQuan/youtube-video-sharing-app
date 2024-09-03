@@ -5,8 +5,6 @@ import { Model } from 'mongoose'
 import { Notification } from './entities/Notification.entity'
 import { MIN_OFFSET } from 'pipelines/offset.pipe'
 import { MAX_LIMIT } from 'pipelines/limit.pipe'
-import { Video } from 'modules/videos/entities/video.entity'
-import { User } from 'modules/users/entities/users.entity'
 import { CreateNotificationDto } from './dto/create-noti.dto'
 
 @Injectable()
@@ -23,21 +21,11 @@ export class NotificationService {
     offset?: number
     limit?: number
   }) {
-    return await this.notiModel.find(
-      {},
-      {
-        sort: { createdAt: -1 },
-        skip: offset,
-        limit,
-      },
-      {
-        populate: [
-          { path: 'videoId', model: Video.name },
-          { path: 'sender', model: User.name },
-          { path: 'recipient', model: User.name },
-        ],
-      },
-    )
+    return await this.notiModel
+      .find({}, {}, { sort: { createdAt: -1 }, skip: offset, limit })
+      .populate('videoId', 'title')
+      .populate('sender', 'name')
+      .populate('recipient', 'name')
   }
 
   async markRead(id: string) {
