@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 
-import { Notification } from './entities/Notification.entity'
+import { Notification } from './entities/notification.entity'
 import { MIN_OFFSET } from 'pipelines/offset.pipe'
 import { MAX_LIMIT } from 'pipelines/limit.pipe'
 import { CreateNotificationDto } from './dto/create-noti.dto'
