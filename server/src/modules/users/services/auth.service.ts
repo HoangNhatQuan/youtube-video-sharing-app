@@ -50,7 +50,7 @@ export class AuthService {
 
     //Generate JWT tokens
     const tokens = await this.generateUserTokens(user._id.toString())
-    return { ...tokens, userId: user._id }
+    return tokens
   }
 
   async refreshTokens(refreshToken: string) {

@@ -2,7 +2,7 @@ import { Types } from 'mongoose'
 
 export interface IVideo {
   _id?: Types.ObjectId
-  referrerId: Types.ObjectId
+  referrer: Types.ObjectId
   videoYtbId: string
   url: string
   title: string

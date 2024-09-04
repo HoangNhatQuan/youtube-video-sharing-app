@@ -9,6 +9,7 @@ import {
   RefreshToken,
   RefreshTokenSchema,
 } from './entities/refresh-token.entity'
+import { UserController } from './controllers/user.controller'
 
 @Module({
   imports: [
@@ -20,8 +21,8 @@ import {
       },
     ]),
   ],
-  controllers: [AuthController],
+  controllers: [AuthController, UserController],
   providers: [AuthService, UserService],
-  exports: [UserService],
+  exports: [AuthService, UserService],
 })
 export class UserModule {}

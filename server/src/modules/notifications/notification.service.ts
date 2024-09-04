@@ -17,12 +17,18 @@ export class NotificationService {
   async getNotifications({
     offset = MIN_OFFSET,
     limit = MAX_LIMIT,
+    userId,
   }: {
     offset?: number
     limit?: number
+    userId: string
   }) {
     return await this.notiModel
-      .find({}, {}, { sort: { createdAt: -1 }, skip: offset, limit })
+      .find(
+        { recipient: userId },
+        {},
+        { sort: { createdAt: -1 }, skip: offset, limit },
+      )
       .populate('videoId', 'title')
       .populate('sender', 'name')
       .populate('recipient', 'name')

@@ -11,7 +11,7 @@ export class Video implements IVideo {
   _id?: Types.ObjectId
 
   @Prop({ type: Types.ObjectId, required: true, ref: User.name })
-  referrerId: Types.ObjectId
+  referrer: Types.ObjectId
 
   @Prop({ type: String, unique: true, index: true, required: true })
   videoYtbId: string

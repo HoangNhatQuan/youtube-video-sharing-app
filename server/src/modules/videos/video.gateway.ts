@@ -13,8 +13,7 @@ import { NotificationService } from 'modules/notifications/notification.service'
 
 @WebSocketGateway({ cors: { origin: '*' } })
 export class VideoGateway implements OnGatewayConnection, OnGatewayDisconnect {
-  @WebSocketServer()
-  wss: Server
+  @WebSocketServer() wss: Server
 
   constructor(
     private readonly userService: UserService,
@@ -45,9 +44,9 @@ export class VideoGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   async notifyNewVideo(video: IVideo) {
-    const { title, referrerId } = video
+    const { title, referrer } = video
     const users = await this.userService.getUsers()
-    const user = await this.userService.getUserById(referrerId)
+    const user = await this.userService.getUserById(referrer)
     const message = `${user.name} shared a new video: ${title}`
 
     for (const recipient of users) {

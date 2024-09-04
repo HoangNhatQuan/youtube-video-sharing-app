@@ -29,9 +29,12 @@ export class VideoService {
     offset?: number
     limit?: number
   }) {
-    return await this.videoModel
+    const videos = await this.videoModel
       .find({}, {}, { sort: { createdAt: -1 }, skip: offset, limit })
-      .populate('referrerId', 'name')
+      .populate('referrer', 'name')
+
+    const count = await this.videoModel.countDocuments()
+    return { count, items: videos }
   }
 
   async shareVideo(userId: string, shareVideoDto: ShareVideoDto) {
@@ -56,7 +59,7 @@ export class VideoService {
     }
 
     const newVideo = await this.videoModel.create({
-      referrerId: new Types.ObjectId(userId),
+      referrer: new Types.ObjectId(userId),
       videoYtbId: videoId,
       url,
       ...metadata,

@@ -1,4 +1,12 @@
-import { Controller, Get, UseGuards, Query, Param, Patch } from '@nestjs/common'
+import {
+  Controller,
+  Get,
+  UseGuards,
+  Query,
+  Param,
+  Patch,
+  Req,
+} from '@nestjs/common'
 
 import { AuthGuard } from 'guards/auth.guard'
 import { ParseOffsetPipe } from 'pipelines/offset.pipe'
@@ -12,10 +20,15 @@ export class NotificationController {
 
   @Get()
   async getNotifications(
+    @Req() req,
     @Query('offset', ParseOffsetPipe) offset: number,
     @Query('limit', ParseLimitPipe) limit: number,
   ) {
-    return await this.notiService.getNotifications({ offset, limit })
+    return await this.notiService.getNotifications({
+      offset,
+      limit,
+      userId: req.userId,
+    })
   }
 
   @Patch('/:id/mark-read')
