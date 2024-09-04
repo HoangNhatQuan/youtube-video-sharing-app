@@ -10,10 +10,7 @@ export const getNotifications = async ({
 }) => {
   const offset = (page - 1) * pageSize
   const { data } = await api.get<INotification[]>('/notifications', {
-    params: {
-      offset,
-      limit: pageSize,
-    },
+    params: { offset, limit: pageSize },
   })
   return data
 }

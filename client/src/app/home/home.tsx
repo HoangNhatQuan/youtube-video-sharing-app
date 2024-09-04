@@ -4,6 +4,7 @@ import { getVideos } from '@/apis/video/video.api'
 import Container from '@/components/container'
 import VideoList from './videos'
 import Notifications from './notifications'
+import LoadingPage from '@/components/loading'
 
 export default function Home() {
   const {
@@ -28,7 +29,7 @@ export default function Home() {
 
   const videos = data ? data.pages.flatMap((page) => page.items) : []
 
-  if (isLoading) return <div className="m-auto">Loading...</div>
+  if (isLoading) return <LoadingPage msg="Loading..." />
   if (isError) return <div className="m-auto">Error: unknown error</div>
 
   return (

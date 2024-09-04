@@ -29,7 +29,7 @@ export class NotificationService {
         {},
         { sort: { createdAt: -1 }, skip: offset, limit },
       )
-      .populate('videoId', 'title')
+      .populate('videoId')
       .populate('sender', 'name')
       .populate('recipient', 'name')
   }

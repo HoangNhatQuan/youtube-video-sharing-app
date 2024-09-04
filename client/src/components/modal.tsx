@@ -1,6 +1,4 @@
-'use client'
 import { Fragment, ReactNode } from 'react'
-import { HeroIcon } from './icons'
 
 export type ModalProps = {
   open?: boolean

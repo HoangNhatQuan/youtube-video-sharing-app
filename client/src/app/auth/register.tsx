@@ -4,6 +4,8 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { signup } from '@/apis/auth/auth.api'
 import { useNavigate } from 'react-router-dom'
+import { useToast } from '@/providers/toast.provider'
+import { useState } from 'react'
 
 const SignUpSchema = yup.object().shape({
   email: yup
@@ -29,7 +31,9 @@ type FormData = {
 }
 
 const RegisterPage = () => {
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const { message } = useToast()
   const {
     register,
     handleSubmit,
@@ -47,10 +51,16 @@ const RegisterPage = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
+      setLoading(true)
       await signup(data)
       await navigate('/login')
       clearErrors()
-    } catch (error: any) {}
+      message({ msg: 'Login successfully', type: 'success' })
+    } catch (er: any) {
+      message({ msg: er.response.data.message, type: 'error' })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -173,8 +183,19 @@ const RegisterPage = () => {
           className="btn btn-primary w-full"
           onClick={handleSubmit(onSubmit)}
         >
-          Register
+          Register now {loading && <div className="loading loading-dots" />}
         </button>
+        <div>
+          <p className="text-center text-sm text-gray-600">
+            Already have an account?{' '}
+            <span
+              className="text-primary cursor-pointer"
+              onClick={() => navigate('/login')}
+            >
+              Login now
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   )

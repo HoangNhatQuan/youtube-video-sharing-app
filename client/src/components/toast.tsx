@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-// import success from '@/static/images/toast/success.svg'
-// import error from '@/static/images/toast/error.svg'
-// import warning from '@/static/images/toast/warning.svg'
+
+import success from '@/assets/success.svg'
+import error from '@/assets/error.svg'
 
 type IconToastProps = {
   type?: 'success' | 'error' | 'warning'
@@ -9,12 +9,10 @@ type IconToastProps = {
 export default function IconToast({ type = 'success' }: IconToastProps) {
   const icon = useMemo(() => {
     switch (type) {
-      // case 'success':
-      //   return success
-      // case 'error':
-      //   return error
-      // case 'warning':
-      //   return warning
+      case 'success':
+        return success
+      case 'error':
+        return error
       default:
         return ''
     }

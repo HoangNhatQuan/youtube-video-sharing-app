@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { QueryClient, useInfiniteQuery } from 'react-query'
 import io from 'socket.io-client'
+import { useNavigate } from 'react-router-dom'
 
 import { useProfile } from '@/providers/auth.provider'
 import {
@@ -8,7 +9,6 @@ import {
   markNotificationAsRead,
 } from '@/apis/notification/notification.api'
 import { INotification } from '@/apis/notification/notification.type'
-import { useNavigate } from 'react-router-dom'
 
 export const useNotification = () => {
   const { user } = useProfile()
@@ -19,7 +19,7 @@ export const useNotification = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, refetch } =
     useInfiniteQuery(
       'notifications',
-      ({ pageParam = 1 }) => getNotifications({ page: pageParam, pageSize: 5 }),
+      ({ pageParam = 1 }) => getNotifications({ page: pageParam, pageSize: 3 }),
       {
         getNextPageParam: (lastPage, allPages) => {
           return lastPage.length ? allPages.length + 1 : undefined
@@ -75,9 +75,6 @@ export const useNotification = () => {
 
   const onClickNotification = useCallback(
     async (notification: INotification) => {
-      if (notification.videoId.url) {
-        navigate(notification.videoId.url)
-      }
       await markNotificationAsRead(notification._id)
       queryClient.setQueryData<INotification[]>(
         ['notifications'],

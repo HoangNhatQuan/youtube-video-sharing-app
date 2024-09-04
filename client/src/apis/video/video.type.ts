@@ -2,9 +2,9 @@ import { IUser } from '../auth/auth.type'
 
 export type IVideo = {
   _id: string
-  videoId: string
+  videoYtbId: string
   title: string
-  description?: string
+  description: string
   thumbnail: string
   url: string
   referrer: IUser

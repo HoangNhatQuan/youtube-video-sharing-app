@@ -39,11 +39,15 @@ export default function VideoList({
     }
   }, [hasNextPage, isFetchingNextPage, fetchNextPage])
 
+  if (!videos.length) {
+    return <div className="m-auto">No videos</div>
+  }
+
   return (
     <div className="flex flex-col items-center">
       {videos.length &&
-        videos?.map((video) => (
-          <VideoCard key={video?.videoId || ''} video={video} />
+        videos.map((video) => (
+          <VideoCard key={video.videoYtbId} video={video} />
         ))}
       {hasNextPage && (
         <div ref={loader} className="loading">

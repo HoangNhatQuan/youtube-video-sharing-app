@@ -25,6 +25,6 @@ export const getVideos = async ({
 }
 
 export const shareVideo = async (url: string) => {
-  const { data } = await api.post<IVideo>('/videos', { url })
+  const { data } = await api.post<IVideo>('/videos/share', { url })
   return data as IVideo
 }
