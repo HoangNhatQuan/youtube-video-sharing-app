@@ -33,10 +33,7 @@ export default function Home() {
   if (isError) return <div className="m-auto">Error: unknown error</div>
 
   return (
-    <Container
-      isMaxWidth={false}
-      bodyClassName="flex-col !px-0 gap-4 max-w-screen-md pt-4"
-    >
+    <Container bodyClassName="flex-col !px-0 gap-4 pt-4">
       <div className="flex flex-row justify-between items-center ">
         <h3 className="font-bold">New Feeds</h3>
         <Notifications />

@@ -23,14 +23,14 @@ export default function VideoCard({ video }: { video: IVideo }) {
         <p className="text-secondary text-base">
           Shared by: {video.referrer.name}
         </p>
-        <div className="text-secondary text-sm ml-2">
+        <div className="text-secondary text-sm mt-4">
           {video.description.length <= MAX_LENGTH
             ? video.description
             : `${video.description.substring(0, MAX_LENGTH)}...`}
           {video.description.length > MAX_LENGTH && (
             <span
               onClick={() => handleReadMoreClick(video.url)}
-              className="text-blue-500 cursor-pointer ml-1"
+              className="text-orange cursor-pointer ml-1"
             >
               Read More
             </span>

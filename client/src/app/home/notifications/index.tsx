@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 
 import ModalTemplate from '@/components/modal'
 
-import bell from '@/assets/bell.png'
+import bell from '@/static/images/bell.png'
 import { useNotification } from '@/hooks/useNotification'
 import { INotification } from '@/apis/notification/notification.type'
 import NotificationCard from './card'

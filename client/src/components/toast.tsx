@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 
-import success from '@/assets/success.svg'
-import error from '@/assets/error.svg'
+import success from '@/static/images/success.svg'
+import error from '@/static/images/error.svg'
 
 type IconToastProps = {
   type?: 'success' | 'error' | 'warning'
