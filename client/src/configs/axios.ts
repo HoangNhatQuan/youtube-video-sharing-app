@@ -3,7 +3,7 @@ import axios from 'axios'
 import { getAccessToken, getRefreshToken, setAccessToken } from '@/utils'
 
 const api = axios.create({
-  baseURL: `${import.meta.env.API_URL || 'http://[::1]:10000'}`,
+  baseURL: `https://youtube-video-sharing-app-hm44.onrender.com`,
 })
 
 // Set the default config for axios

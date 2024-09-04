@@ -39,7 +39,7 @@ export const useNotification = () => {
   useEffect(() => {
     if (!user?.id) return
 
-    const socket = io('http://[::1]:10000', {
+    const socket = io(`https://youtube-video-sharing-app-hm44.onrender.com`, {
       withCredentials: true,
     })
 

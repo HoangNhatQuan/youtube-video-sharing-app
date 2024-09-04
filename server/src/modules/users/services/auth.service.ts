@@ -1,7 +1,6 @@
 import {
   BadRequestException,
   Injectable,
-  NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
@@ -63,13 +62,6 @@ export class AuthService {
       throw new UnauthorizedException('Refresh Token is invalid')
     }
     return this.generateUserTokens(token.userId.toString())
-  }
-
-  async forgotPassword(email: string) {
-    const user = await this.userModel.findOne({ email })
-    if (!user) throw new NotFoundException('User not found')
-
-    //todo
   }
 
   async generateUserTokens(userId: string) {

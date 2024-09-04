@@ -1,11 +1,4 @@
-import {
-  Controller,
-  Get,
-  NotFoundException,
-  Param,
-  Req,
-  UseGuards,
-} from '@nestjs/common'
+import { Controller, Get, Req, UseGuards } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 
@@ -20,13 +13,5 @@ export class UserController {
   @Get('/me')
   async find(@Req() req) {
     return await this.userModel.findById(req.userId).select('-password')
-  }
-
-  @Get(':id')
-  async findOne(@Req() req, @Param('id') id: string) {
-    if (req.userId !== id) {
-      throw new NotFoundException('User not found')
-    }
-    return await this.userModel.findById(req.userId)
   }
 }
