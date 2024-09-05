@@ -12,6 +12,7 @@ Video Youtube Sharing App is a full-featured video-sharing platform similar to Y
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Troubleshooting](#troubleshooting)
 - [Project Structure](#project-structure)
 - [License](#license)
 - [Contact](#contact)
@@ -70,21 +71,46 @@ Video Youtube Sharing App is a full-featured video-sharing platform similar to Y
 
 ## Usage
 
-- **Server already running :**
+1. **Server already running :**
   The server will run on the port https://youtube-video-sharing-app-hm44.onrender.com.
+
+### Server Usage
+- **User Management**
+Register User: Send a POST request to /auth/sign-up with user details.
+Login: Send a POST request to /auth/sign-in with credentials..
+Refresh Access Token: Send a POST request to /auth/refresh with a valid refresh token.
+Get Current User: Send a GET request to /users/me with a valid access token.
+- **Video Management**
+Share Video: Send a POST request to /videos/share with the YouTube video URL.
+Get All Videos: Send a GET request to /videos with optional query parameters for filtering and pagination.
+
+- **Notification**
+Get All Notification: Send a GET request to /notification with optional query parameters for filtering and pagination.
   
-- **API Documentation:**
-This project provides a comprehensive set of RESTful API endpoints to interact with the VideoSharing App, covering user management, video operations, notification and authentication.
+2. **API Documentation:**
+This project provides a comprehensive set of RESTful API endpoints to interact with the Video Sharing App, covering user management, video operations, notification and authentication.
 
-- **Database:** Setup on NoSQL as MongoDb
-
-To facilitate testing and exploration of these endpoints
+3. **Database:** Setup on NoSQL as MongoDb
 
 ### Note
 
 - Ensure your local server is running before testing the endpoints.
 - Some endpoints may require authentication.
 
+## Troubleshooting
+### Common Issues
+
+1. **API Requests Fail:**
+Issue: Requests to the API endpoints fail or return errors.
+Solution: Check that the API server is running and that the correct endpoints are being used. Review API documentation and ensure correct request formatting.
+
+2. **WebSocket Connection Issues:**
+
+Issue: Real-time notifications are not being received.
+Solution: Ensure the WebSocket server is running and accessible. Verify that the client-side code is correctly connecting to the WebSocket server.
+
+3. **Docker Container Issues:**
+Issue: Docker containers fail to start or run incorrectly.
 
 ## Project Structure Client and Server
 
