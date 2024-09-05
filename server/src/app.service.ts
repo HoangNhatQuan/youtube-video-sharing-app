@@ -4,7 +4,8 @@ import { Cron } from '@nestjs/schedule';
 export class AppService {
 
   @Cron('*/15 * * * *')
-  getHello() {
+  getHello(): string {
     console.log('Hello World!')
+    return 'Success'
   }
 }
