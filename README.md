@@ -74,16 +74,16 @@ Video Youtube Sharing App is a video sharing platform. It allows users to share 
 1. **Server already running :**
   The server will run on the port https://youtube-video-sharing-app-hm44.onrender.com.
   - **User Management**
-     -- Register User: Send a POST request to /auth/sign-up with user details.
-     -- Login: Send a POST request to /auth/sign-in with credentials..
-     -- Refresh Access Token: Send a POST request to /auth/refresh with a valid refresh token.
-     -- Get Current User: Send a GET request to /users/me with a valid access token.
-- **Video Management**
-     -- Share Video: Send a POST request to /videos/share with the YouTube video URL.
-     -- Get All Videos: Send a GET request to /videos with optional query parameters for filtering and pagination.
+    - Register User: Send a POST request to /auth/sign-up with user details.
+    - Login: Send a POST request to /auth/sign-in with credentials..
+    - Refresh Access Token: Send a POST request to /auth/refresh with a valid refresh token.
+    - Get Current User: Send a GET request to /users/me with a valid access token.
+  - **Video Management**
+    - Share Video: Send a POST request to /videos/share with the YouTube video URL.
+    - Get All Videos: Send a GET request to /videos with optional query parameters for filtering and pagination.
 
 - **Notification**
-     -- Get All Notification: Send a GET request to /notification with optional query parameters for filtering and pagination.
+  - Get All Notification: Send a GET request to /notification with optional query parameters for filtering and pagination.
   
 2. **API Documentation:**
 This project provides a comprehensive set of RESTful API endpoints to interact with the Video Sharing App, covering user management, video operations, notification and authentication.
