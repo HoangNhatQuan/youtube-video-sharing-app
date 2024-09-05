@@ -76,6 +76,8 @@ Video Youtube Sharing App is a full-featured video-sharing platform similar to Y
 - **API Documentation:**
 This project provides a comprehensive set of RESTful API endpoints to interact with the VideoSharing App, covering user management, video operations, notification and authentication.
 
+- **Database:** Setup on NoSQL as MongoDb
+
 To facilitate testing and exploration of these endpoints
 
 ### Note
