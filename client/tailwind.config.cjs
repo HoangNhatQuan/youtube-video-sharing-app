@@ -32,14 +32,6 @@ module.exports = {
       {
         light: {
           ...daisyui['[data-theme=light]'],
-          '--fallback-b1': '#F7ECE7',
-          '--fallback-s': '#536E83',
-          '--fallback-b3': '#dadada',
-          '--fallback-bc': '#C16240',
-          '--fallback-gr1': '#7995AA',
-          '--fallback-bb': '#2C1A16',
-          '--fallback-pc': '#fff',
-          '--fallback-og': '#F9F4D5',
           primary: '#C16240',
           secondary: '#536E83',
           success: '#07B682',

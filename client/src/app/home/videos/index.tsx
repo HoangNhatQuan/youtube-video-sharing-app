@@ -12,29 +12,29 @@ type VideoListProps = {
 
 export default function VideoList({
   videos,
-  fetchNextPage,
   hasNextPage,
   isFetchingNextPage,
+  fetchNextPage,
 }: VideoListProps) {
-  const loader = useRef<HTMLDivElement | null>(null)
+  const loadingRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+        if (entries[0].isIntersecting && !isFetchingNextPage && hasNextPage) {
           fetchNextPage()
         }
       },
-      { threshold: 1.0 },
+      { threshold: 1 },
     )
 
-    if (loader.current) {
-      observer.observe(loader.current)
+    if (loadingRef.current) {
+      observer.observe(loadingRef.current)
     }
 
     return () => {
-      if (loader.current) {
-        observer.unobserve(loader.current)
+      if (loadingRef.current) {
+        observer.unobserve(loadingRef.current)
       }
     }
   }, [hasNextPage, isFetchingNextPage, fetchNextPage])
@@ -49,11 +49,7 @@ export default function VideoList({
         videos.map((video) => (
           <VideoCard key={video.videoYtbId} video={video} />
         ))}
-      {hasNextPage && (
-        <div ref={loader} className="loading">
-          Loading more...
-        </div>
-      )}
+      {hasNextPage && <div ref={loadingRef} className="loading"></div>}
     </div>
   )
 }

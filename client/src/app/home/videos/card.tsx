@@ -1,14 +1,14 @@
 import { IVideo } from '@/apis/video/video.type'
 
 export default function VideoCard({ video }: { video: IVideo }) {
-  const MAX_LENGTH = 100
+  const MAX_LENGTH = 300
 
   const handleReadMoreClick = (url: string) => {
     window.open(url, '_blank')
   }
   return (
-    <div className="card flex flex-row justify-between items-start p-4 w-full rounded-lg mb-4">
-      <div className="w-1/2">
+    <div className="card flex flex-col md:flex-row justify-between items-start p-4 w-full rounded-lg mb-4">
+      <div className="w-full md:w-1/2">
         <iframe
           width="100%"
           height="250"
@@ -18,7 +18,7 @@ export default function VideoCard({ video }: { video: IVideo }) {
           allowFullScreen
         />
       </div>
-      <div className="w-1/2 pl-4">
+      <div className="w-full md:w-1/2 pt-4 md:pl-4">
         <h5 className="font-bold mb-2">{video.title}</h5>
         <p className="text-secondary text-base">
           Shared by: {video.referrer.name}

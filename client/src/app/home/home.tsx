@@ -33,7 +33,7 @@ export default function Home() {
   if (isError) return <div className="m-auto">Error: unknown error</div>
 
   return (
-    <Container bodyClassName="flex-col !px-0 gap-4 pt-4">
+    <Container bodyClassName="flex-col gap-4 py-4">
       <div className="flex flex-row justify-between items-center ">
         <h3 className="font-bold">New Feeds</h3>
         <Notifications />
