@@ -3,8 +3,8 @@ import { Cron } from '@nestjs/schedule';
 @Injectable()
 export class AppService {
 
-    @Cron('*/15 * * * *')
+  @Cron('*/15 * * * *')
   getHello(): string {
-    return 'Hello World!'
+    console.log('Hello World!')
   }
 }
