@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common'
-import { Cron } from '@nestjs/schedule';
+import { Interval } from '@nestjs/schedule';
 @Injectable()
 export class AppService {
 
-  @Cron('*/15 * * * *')
+  @Interval(120000)
   getHello(): string {
     console.log('Hello World!')
     return 'Success'
