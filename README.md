@@ -5,7 +5,7 @@
 
 ## Overview
 
-Video Youtube Sharing App is a full-featured video-sharing platform similar to YouTube. It allows users to share video show in new feeds. The project is built with a focus on scalability, performance, and ease of use.
+Video Youtube Sharing App is a video sharing platform. It allows users to share video show in new feeds. The project is built with a focus on scalability, performance, and ease of use.
 
 ## Table of Contents
 
@@ -101,16 +101,16 @@ This project provides a comprehensive set of RESTful API endpoints to interact w
 ### Common Issues
 
 1. **API Requests Fail:**
-Issue: Requests to the API endpoints fail or return errors.
-Solution: Check that the API server is running and that the correct endpoints are being used. Review API documentation and ensure correct request formatting.
+- Issue: Requests to the API endpoints fail or return errors.
+- Solution: Check that the API server is running and that the correct endpoints are being used. Review API documentation and ensure correct request formatting.
 
 2. **WebSocket Connection Issues:**
 
-Issue: Real-time notifications are not being received.
-Solution: Ensure the WebSocket server is running and accessible. Verify that the client-side code is correctly connecting to the WebSocket server.
+- Issue: Real-time notifications are not being received.
+- Solution: Ensure the WebSocket server is running and accessible. Verify that the client-side code is correctly connecting to the WebSocket server.
 
 3. **Docker Container Issues:**
-Issue: Docker containers fail to start or run incorrectly.
+- Issue: Docker containers fail to start or run incorrectly.
 
 ## Project Structure Client and Server
 
