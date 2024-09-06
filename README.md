@@ -15,7 +15,6 @@ Video Youtube Sharing App is a video sharing platform. It allows users to share 
 - [Troubleshooting](#troubleshooting)
 - [Project Structure](#project-structure)
 - [License](#license)
-- [Contact](#contact)
 
 ## Features
 
@@ -82,8 +81,8 @@ Video Youtube Sharing App is a video sharing platform. It allows users to share 
     - Share Video: Send a POST request to /videos/share with the YouTube video URL.
     - Get All Videos: Send a GET request to /videos with optional query parameters for filtering and pagination.
 
-- **Notification**
-  - Get All Notification: Send a GET request to /notification with optional query parameters for filtering and pagination.
+  - **Notification**
+    - Get All Notification: Send a GET request to /notification with optional query parameters for filtering and pagination.
   
 2. **API Documentation:**
 This project provides a comprehensive set of RESTful API endpoints to interact with the Video Sharing App, covering user management, video operations, notification and authentication.
@@ -112,7 +111,7 @@ This project provides a comprehensive set of RESTful API endpoints to interact w
 
 ## Project Structure Client and Server
 
-# Client
+### Client
 ```plaintext
 /client
 |-- /public
@@ -125,17 +124,14 @@ This project provides a comprehensive set of RESTful API endpoints to interact w
 |   |-- /providers
 |   |-- /static
 |   |-- /ultis      
-|   |-- app.js      
-|   |-- index.js    
-|   |-- constants.js
-|-- main.tsx
+|-- |-- main.tsx
 |-- .gitignore
 |-- .prettierignore
 |-- package.json
 |-- package-lock.json
 ```
 
-# Server
+### Server
 ```plaintext
 /server
 |-- /public
