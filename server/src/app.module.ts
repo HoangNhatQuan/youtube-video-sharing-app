@@ -12,6 +12,7 @@ import { AppService } from './app.service'
 import { YoutubeApiModule } from 'providers/youtube-api/youtube-api.module'
 import { NotificationModule } from 'modules/notifications/notification.module'
 import { VideoModule } from 'modules/videos/video.module'
+import { AppJob } from 'app.job'
 
 @Module({
   imports: [
@@ -45,6 +46,6 @@ import { VideoModule } from 'modules/videos/video.module'
     VideoModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppJob],
 })
 export class AppModule {}
