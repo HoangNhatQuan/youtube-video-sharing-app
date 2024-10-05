@@ -1,35 +1,38 @@
 
 ---
 
-# BSA Sales Order Management System
+# VideoSharing App
 
 ## Overview
 
-The BSA Sales Order Management System helps BSA, a cosmetic distribution company, manage their B2B sales orders, pricing, and fulfillment. This system allows for efficient order creation, shipping management, and fulfillment from the main warehouse and BSA’s stores.
+Video Youtube Sharing App is a video sharing platform. It allows users to share video show in new feeds. The project is built with a focus on scalability, performance, and ease of use.
 
 ## Table of Contents
 
 - [Features](#features)
-- [Design System](#Design)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Troubleshooting](#troubleshooting)
 - [Project Structure](#project-structure)
 - [License](#license)
+- [Contact](#contact)
 
 ## Features
-### Sales Order Management
-- ** Create Sales Orders: BSA can create and manage sales orders for customers, factoring in customer-specific pricing (Starter, Professional, VIP).
-- ** Shipping Options: When creating sales orders, BSA can select between Free Shipping (from the warehouse) or Pickup (from any store).
-- ** Store Pickup: If the customer selects Pickup, they can choose from a list of BSA stores for order collection.
-- ** Fulfillment Management: BSA can manage fulfillment, including notifying customers when an order is ready for pickup or has been shipped.
 
-### Pricing Management
-- **Dynamic Discounts: Customer categories (Starter, Professional, VIP) receive automated pricing discounts of 5%, 7%, and 10%, respectively.
-- **Adjustable Discounts: BSA can adjust discount rates for each customer category in the system.
+### User Management
+- **Register User (Signup)**: Perform CRUD operations to manage user accounts.
+- **Login (Sign-in)**: User authentication.
+- **Logout**: Securely log out users.
+- **Refresh Access Token**: Handle token refresh for authenticated sessions.
+- **Get Current User**: Retrieve the logged-in user’s details.
+
+### Video Management
+- **Share Video**: Share url youtube by api v3 Youtube and manage video content.
+- **Get All Videos**: Fetch and paginate videos with filtering.
 
 ### Notification
-- **Email Notifications: Send automated email notifications to customers when their orders are ready for pickup or when they are shipped.
+- **Real-Time Notifications**: Receive real-time updates when a user shares a new video.
+- **Pop-Up Notifications**: Display notifications in the UI when a new video is shared.
 
 ## Installation Client
 
@@ -65,18 +68,26 @@ The BSA Sales Order Management System helps BSA, a cosmetic distribution company
    ```bash
    pnpm start:dev
    ```
-## Design Module
-- ** Link ERD Diagram : https://drive.google.com/file/d/1mfXm4xzBg_Ew9XDiozXZ2ufjRO06Qxk0/view?usp=sharing
+
 ## Usage
 
-1. **Create Sales Orders:**
-  - **Navigate to the Sales Order section of the system.
-  - **Select a customer and create a sales order based on their category (Starter, Professional, VIP) for dynamic discounting.
-  - **Choose either Free Shipping or Pickup from a store.
+1. **Server already running :**
+  The server will run on the port https://youtube-video-sharing-app-hm44.onrender.com.
+  - **User Management**
+    - Register User: Send a POST request to /auth/sign-up with user details.
+    - Login: Send a POST request to /auth/sign-in with credentials..
+    - Refresh Access Token: Send a POST request to /auth/refresh with a valid refresh token.
+    - Get Current User: Send a GET request to /users/me with a valid access token.
+  - **Video Management**
+    - Share Video: Send a POST request to /videos/share with the YouTube video URL.
+    - Get All Videos: Send a GET request to /videos with optional query parameters for filtering and pagination.
+
+- **Notification**
+  - Get All Notification: Send a GET request to /notification with optional query parameters for filtering and pagination.
   
-2. **Manage Fulfillment:**
-  - **Free Shipping: Fulfilled from the main warehouse, and an email is sent notifying the customer that their order is on the way.
-  - **Pickup: Fulfilled from the selected store, and an email is sent to notify the customer to pick up the order.
+2. **API Documentation:**
+This project provides a comprehensive set of RESTful API endpoints to interact with the Video Sharing App, covering user management, video operations, notification and authentication.
+
 3. **Database:** Setup on NoSQL as MongoDb
 
 ### Note
@@ -91,12 +102,40 @@ The BSA Sales Order Management System helps BSA, a cosmetic distribution company
 - Issue: Requests to the API endpoints fail or return errors.
 - Solution: Check that the API server is running and that the correct endpoints are being used. Review API documentation and ensure correct request formatting.
 
-2. **Orders not showing correct discounts:**
-Issue: Discounts are not applied correctly to the order.
-Solution: Verify that the customer is assigned to the correct category (Starter, Professional, VIP) and the discount rates are properly configured.
-## Project Structure Serve
+2. **WebSocket Connection Issues:**
 
-### Server
+- Issue: Real-time notifications are not being received.
+- Solution: Ensure the WebSocket server is running and accessible. Verify that the client-side code is correctly connecting to the WebSocket server.
+
+3. **Docker Container Issues:**
+- Issue: Docker containers fail to start or run incorrectly.
+
+## Project Structure Client and Server
+
+# Client
+```plaintext
+/client
+|-- /public
+|-- /src
+|   |-- /apis
+|   |-- /app
+|   |-- /components
+|   |-- /configs
+|   |-- /hooks
+|   |-- /providers
+|   |-- /static
+|   |-- /ultis      
+|   |-- app.js      
+|   |-- index.js    
+|   |-- constants.js
+|-- main.tsx
+|-- .gitignore
+|-- .prettierignore
+|-- package.json
+|-- package-lock.json
+```
+
+# Server
 ```plaintext
 /server
 |-- /public
@@ -105,7 +144,8 @@ Solution: Verify that the customer is assigned to the correct category (Starter,
 |   |-- /decorators
 |   |-- /guards
 |   |-- /modules
-|   |-- /pipelines       
+|   |-- /pipelines
+|   |-- providers/youtube-api         
 |   |-- app.controller.ts    
 |   |-- app.module.ts  
 |   |-- app.service.ts
@@ -122,4 +162,3 @@ Solution: Verify that the customer is assigned to the correct category (Starter,
 This project is licensed under the MIT License.
 
 ---
-
